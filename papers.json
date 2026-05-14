@@ -13,6 +13,19 @@
       "doi": "10.1016/j.pnucene.2025.105928",
       "paper_url": "https://www.sciencedirect.com/science/article/pii/S0149197025003269",
       "notes": "State reconstruction from three out-of-core neutron flux measurements over 20 coupled field variables."
+    },
+    {
+      "title": "A Comparative Study of Parametric Dynamic Mode Decomposition Algorithms on Thermal-Hydraulics Case Studies",
+      "authors": "Stefano Riva; Andrea Missaglia; Carolina Introini; In Cheol Bang; Antonio Cammi",
+      "journal": "Nuclear Technology",
+      "year": 2026,
+      "volume": "0",
+      "pages": "1--25",
+      "repository": "ROSE-pDMD",
+      "repository_url": "https://github.com/ERMETE-Lab/ROSE-pDMD",
+      "submodule_path": "repositories/ROSE-pDMD",
+      "doi": "10.1080/00295450.2025.2575701",
+      "paper_url": "https://doi.org/10.1080/00295450.2025.2575701"
     }
   ]
 }

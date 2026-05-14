@@ -1,0 +1,6 @@
+[submodule "repositories/NuSHRED"]
+	path = repositories/NuSHRED
+	url = https://github.com/ERMETE-Lab/NuSHRED
+[submodule "repositories/ROSE-pDMD"]
+	path = repositories/ROSE-pDMD
+	url = https://github.com/ERMETE-Lab/ROSE-pDMD
