@@ -55,7 +55,7 @@
       "notes": "Fully open-source multi-physics coupling of OpenMC (neutronics) and FEniCSx (thermal-hydraulics) for PWR fuel pin analysis."
     },
     {
-      "title": "A finite element implementation of the incompressible Schrödinger flow method",
+      "title": "A finite element implementation of the incompressible Schroedinger flow method",
       "authors": "Stefano Riva; Carolina Introini; Antonio Cammi",
       "journal": "Physics of Fluids",
       "year": 2024,
