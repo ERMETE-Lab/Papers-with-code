@@ -3,190 +3,396 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>ERMETE-Lab Papers with code</title>
+    <title>ERMETE-Lab · Papers with code</title>
     <style>
       :root {
-        color-scheme: light dark;
-        font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
-          sans-serif;
-      }
-
-      body {
-        margin: 0;
-        padding: 2rem;
-        background: #f6f8fa;
-        color: #24292f;
-      }
-
-      main {
-        max-width: 960px;
-        margin: 0 auto;
-      }
-
-      h1 {
-        margin-top: 0;
-      }
-
-      .lead {
-        margin-bottom: 1.5rem;
-      }
-
-      .empty-state,
-      table {
-        width: 100%;
-        background: #ffffff;
-        border: 1px solid #d0d7de;
-        border-radius: 0.5rem;
-        box-shadow: 0 1px 2px rgba(31, 35, 40, 0.04);
-      }
-
-      .empty-state {
-        padding: 1.5rem;
-        box-sizing: border-box;
-      }
-
-      table {
-        border-collapse: collapse;
-        overflow: hidden;
-      }
-
-      th,
-      td {
-        padding: 0.9rem;
-        text-align: left;
-        vertical-align: top;
-        border-bottom: 1px solid #d8dee4;
-      }
-
-      tr:last-child td {
-        border-bottom: 0;
-      }
-
-      th {
-        background: #f6f8fa;
-      }
-
-      code {
-        font-size: 0.9em;
-      }
-
-      a {
-        color: #0969da;
+        --bg: #f6f8fa;
+        --surface: #ffffff;
+        --border: #d0d7de;
+        --text: #24292f;
+        --text-muted: #57606a;
+        --accent: #0969da;
+        --accent-muted: #ddf4ff;
+        --accent-border: #54aeff;
+        --hero-bg: #0d1117;
+        --hero-text: #e6edf3;
+        --hero-sub: #8b949e;
+        --tag-bg: #eaeef2;
+        --tag-text: #24292f;
+        --shadow: 0 1px 3px rgba(31, 35, 40, 0.1), 0 4px 12px rgba(31, 35, 40, 0.04);
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       }
 
       @media (prefers-color-scheme: dark) {
-        body {
-          background: #0d1117;
-          color: #e6edf3;
+        :root {
+          --bg: #0d1117;
+          --surface: #161b22;
+          --border: #30363d;
+          --text: #e6edf3;
+          --text-muted: #8b949e;
+          --accent: #58a6ff;
+          --accent-muted: #0c2d6b;
+          --accent-border: #1f6feb;
+          --hero-bg: #010409;
+          --hero-text: #e6edf3;
+          --hero-sub: #8b949e;
+          --tag-bg: #21262d;
+          --tag-text: #c9d1d9;
+          --shadow: 0 1px 3px rgba(0, 0, 0, 0.4), 0 4px 12px rgba(0, 0, 0, 0.2);
         }
+      }
 
-        .empty-state,
-        table {
-          background: #161b22;
-          border-color: #30363d;
-        }
+      *, *::before, *::after { box-sizing: border-box; }
 
-        th,
-        td {
-          border-bottom-color: #30363d;
-        }
+      body {
+        margin: 0;
+        background: var(--bg);
+        color: var(--text);
+        line-height: 1.6;
+      }
 
-        th {
-          background: #0d1117;
-        }
+      /* ── Hero ── */
+      .hero {
+        background: var(--hero-bg);
+        color: var(--hero-text);
+        padding: 3rem 2rem;
+        text-align: center;
+      }
 
-        a {
-          color: #58a6ff;
-        }
+      .hero-label {
+        display: inline-block;
+        font-size: 0.75rem;
+        font-weight: 600;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: var(--hero-sub);
+        margin-bottom: 0.75rem;
+      }
+
+      .hero h1 {
+        margin: 0 0 0.75rem;
+        font-size: clamp(1.6rem, 4vw, 2.4rem);
+        font-weight: 700;
+        letter-spacing: -0.02em;
+      }
+
+      .hero p {
+        margin: 0 auto;
+        max-width: 52ch;
+        color: var(--hero-sub);
+        font-size: 1rem;
+      }
+
+      .hero-links {
+        margin-top: 1.5rem;
+        display: flex;
+        justify-content: center;
+        gap: 0.75rem;
+        flex-wrap: wrap;
+      }
+
+      .hero-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.4em;
+        padding: 0.45rem 1rem;
+        border-radius: 6px;
+        font-size: 0.875rem;
+        font-weight: 500;
+        text-decoration: none;
+        transition: opacity 0.15s;
+      }
+      .hero-link:hover { opacity: 0.8; }
+      .hero-link.primary {
+        background: var(--accent);
+        color: #fff;
+      }
+      .hero-link.secondary {
+        background: transparent;
+        border: 1px solid #30363d;
+        color: var(--hero-text);
+      }
+
+      /* ── Main content ── */
+      main {
+        max-width: 1080px;
+        margin: 0 auto;
+        padding: 2.5rem 1.5rem 4rem;
+      }
+
+      .section-header {
+        display: flex;
+        align-items: baseline;
+        gap: 0.75rem;
+        margin-bottom: 1.5rem;
+      }
+
+      .section-header h2 {
+        margin: 0;
+        font-size: 1.1rem;
+        font-weight: 600;
+      }
+
+      .count-badge {
+        font-size: 0.75rem;
+        font-weight: 600;
+        padding: 0.15em 0.6em;
+        border-radius: 2em;
+        background: var(--tag-bg);
+        color: var(--text-muted);
+      }
+
+      /* ── Cards grid ── */
+      .cards {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(min(100%, 420px), 1fr));
+        gap: 1rem;
+      }
+
+      .card {
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: 10px;
+        padding: 1.25rem 1.25rem 1rem;
+        display: flex;
+        flex-direction: column;
+        gap: 0.75rem;
+        box-shadow: var(--shadow);
+        transition: border-color 0.15s, box-shadow 0.15s;
+      }
+      .card:hover {
+        border-color: var(--accent-border);
+        box-shadow: var(--shadow), 0 0 0 3px var(--accent-muted);
+      }
+
+      .card-title {
+        font-size: 0.975rem;
+        font-weight: 600;
+        line-height: 1.4;
+        margin: 0;
+      }
+
+      .card-meta {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.4rem;
+        font-size: 0.8rem;
+        color: var(--text-muted);
+      }
+
+      .tag {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.3em;
+        padding: 0.2em 0.55em;
+        border-radius: 4px;
+        background: var(--tag-bg);
+        color: var(--tag-text);
+        font-size: 0.75rem;
+        font-weight: 500;
+        white-space: nowrap;
+      }
+
+      .card-authors {
+        font-size: 0.8rem;
+        color: var(--text-muted);
+        margin: 0;
+      }
+
+      .card-notes {
+        font-size: 0.82rem;
+        color: var(--text-muted);
+        border-left: 3px solid var(--border);
+        padding-left: 0.75rem;
+        margin: 0;
+        line-height: 1.5;
+      }
+
+      .card-footer {
+        margin-top: auto;
+        padding-top: 0.75rem;
+        border-top: 1px solid var(--border);
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 0.5rem;
+      }
+
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.35em;
+        padding: 0.3rem 0.75rem;
+        border-radius: 6px;
+        font-size: 0.8rem;
+        font-weight: 500;
+        text-decoration: none;
+        transition: background 0.12s;
+      }
+      .btn-primary {
+        background: var(--accent);
+        color: #fff;
+      }
+      .btn-primary:hover { background: #0550ae; }
+      @media (prefers-color-scheme: dark) {
+        .btn-primary:hover { background: #79c0ff; color: #0d1117; }
+      }
+      .btn-secondary {
+        background: var(--tag-bg);
+        color: var(--text);
+        border: 1px solid var(--border);
+      }
+      .btn-secondary:hover { background: var(--border); }
+
+      .submodule-path {
+        margin-left: auto;
+        font-size: 0.72rem;
+        font-family: ui-monospace, SFMono-Regular, "Cascadia Code", monospace;
+        color: var(--text-muted);
+        background: var(--tag-bg);
+        padding: 0.2em 0.5em;
+        border-radius: 4px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        max-width: 180px;
+      }
+
+      /* ── Empty / loading state ── */
+      .empty-state {
+        grid-column: 1 / -1;
+        padding: 3rem 2rem;
+        text-align: center;
+        background: var(--surface);
+        border: 1px dashed var(--border);
+        border-radius: 10px;
+        color: var(--text-muted);
+        font-size: 0.9rem;
       }
     </style>
   </head>
   <body>
-    <main>
-      <h1>ERMETE-Lab papers with code</h1>
-      <p class="lead">
-        Journal papers are listed here together with the ERMETE-Lab repository
-        that contains the related implementation.
+    <!-- Hero -->
+    <header class="hero">
+      <span class="hero-label">ERMETE-Lab</span>
+      <h1>Papers with code</h1>
+      <p>
+        Journal papers published by the group that are accompanied by a public
+        companion code repository.
       </p>
-      <div id="content" class="empty-state">Loading paper index…</div>
+      <div class="hero-links">
+        <a class="hero-link primary" href="https://github.com/ERMETE-Lab" target="_blank" rel="noopener">
+          <!-- GitHub mark -->
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38
+              0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13
+              -.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66
+              .07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15
+              -.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0
+              1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82
+              1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01
+              1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"/>
+          </svg>
+          ERMETE-Lab
+        </a>
+        <a class="hero-link secondary" href="https://github.com/ERMETE-Lab/Papers-with-code" target="_blank" rel="noopener">
+          This repository
+        </a>
+      </div>
+    </header>
+
+    <main>
+      <div class="section-header">
+        <h2>Publications</h2>
+        <span class="count-badge" id="count"></span>
+      </div>
+      <div class="cards" id="content">
+        <div class="empty-state">Loading paper index…</div>
+      </div>
     </main>
+
     <script>
       const content = document.getElementById("content");
+      const countBadge = document.getElementById("count");
 
       function renderEmptyState(message) {
-        content.className = "empty-state";
-        content.textContent = message;
+        content.innerHTML = `<div class="empty-state">${message}</div>`;
       }
 
-      function renderTable(papers) {
-        const rows = papers
-          .map(
-            (paper) => `
-              <tr>
-                <td>
-                  <strong>${paper.title}</strong>
-                  ${paper.authors ? `<div>${paper.authors}</div>` : ""}
-                  ${paper.journal ? `<div>${paper.journal}</div>` : ""}
-                  ${paper.year ? `<div>${paper.year}</div>` : ""}
-                </td>
-                <td>
-                  ${
-                    paper.paper_url
-                      ? `<a href="${paper.paper_url}">Read paper</a>`
-                      : ""
-                  }
-                  ${paper.doi ? `<div><code>${paper.doi}</code></div>` : ""}
-                </td>
-                <td>
-                  <a href="${paper.repository_url}">${paper.repository}</a>
-                </td>
-                <td><code>${paper.submodule_path}</code></td>
-                <td>${paper.notes ?? ""}</td>
-              </tr>
-            `,
-          )
-          .join("");
+      function renderCards(papers) {
+        countBadge.textContent = papers.length;
 
-        content.className = "";
-        content.innerHTML = `
-          <table>
-            <thead>
-              <tr>
-                <th>Paper</th>
-                <th>Publication</th>
-                <th>Repository</th>
-                <th>Submodule path</th>
-                <th>Notes</th>
-              </tr>
-            </thead>
-            <tbody>${rows}</tbody>
-          </table>
-        `;
+        content.innerHTML = papers.map((p) => {
+          const tags = [
+            p.journal ? `<span class="tag">${p.journal}</span>` : "",
+            p.year    ? `<span class="tag">${p.year}</span>`    : "",
+            p.volume  ? `<span class="tag">Vol. ${p.volume}</span>` : "",
+            p.pages   ? `<span class="tag">pp. ${p.pages}</span>`   : "",
+          ].filter(Boolean).join("");
+
+          const readBtn = p.paper_url
+            ? `<a class="btn btn-primary" href="${p.paper_url}" target="_blank" rel="noopener">
+                 <svg width="12" height="12" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+                   <path d="M1.75 2h7.5A.75.75 0 0 1 10 2.75v1.5a.75.75 0 0 1-1.5
+                     0V3.5h-6v9h6v-.75a.75.75 0 0 1 1.5 0v1.5a.75.75 0 0 1-.75.75h-7.5A.75.75
+                     0 0 1 1 13.25v-10.5A.75.75 0 0 1 1.75 2Zm9.97 4.22 2.03 2.03-2.03
+                     2.03a.75.75 0 0 1-1.06-1.06l.72-.72H6.75a.75.75 0 0 1 0-1.5h5.63l-.72-.72a.75.75
+                     0 1 1 1.06-1.06Z"/>
+                 </svg>
+                 Read paper
+               </a>`
+            : "";
+
+          const codeBtn = `<a class="btn btn-secondary" href="${p.repository_url}" target="_blank" rel="noopener">
+              <svg width="12" height="12" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+                <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38
+                  0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13
+                  -.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66
+                  .07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15
+                  -.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0
+                  1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82
+                  1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01
+                  1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"/>
+              </svg>
+              ${p.repository}
+            </a>`;
+
+          const doiTag = p.doi
+            ? `<span class="tag">DOI: ${p.doi}</span>`
+            : "";
+
+          return `
+            <article class="card">
+              <h3 class="card-title">${p.title}</h3>
+              ${p.authors ? `<p class="card-authors">${p.authors}</p>` : ""}
+              ${tags || doiTag ? `<div class="card-meta">${tags}${doiTag}</div>` : ""}
+              ${p.notes ? `<p class="card-notes">${p.notes}</p>` : ""}
+              <div class="card-footer">
+                ${readBtn}
+                ${codeBtn}
+                <span class="submodule-path" title="${p.submodule_path}">${p.submodule_path}</span>
+              </div>
+            </article>
+          `;
+        }).join("");
       }
 
       fetch("./papers.json")
-        .then((response) => {
-          if (!response.ok) {
-            throw new Error("Unable to load paper metadata.");
-          }
-
-          return response.json();
+        .then((r) => {
+          if (!r.ok) throw new Error("Unable to load paper metadata.");
+          return r.json();
         })
         .then((data) => {
           const papers = Array.isArray(data.papers) ? data.papers : [];
-
           if (!papers.length) {
             renderEmptyState(
-              "No linked journal papers have been added yet. Add a repository submodule under repositories/ and a matching entry in papers.json.",
+              "No papers have been added yet. Add a submodule under <code>repositories/</code> and a matching entry in <code>papers.json</code>."
             );
             return;
           }
-
-          renderTable(papers);
+          renderCards(papers);
         })
-        .catch((error) => {
-          renderEmptyState(error.message);
-        });
+        .catch((e) => renderEmptyState(e.message));
     </script>
   </body>
 </html>
