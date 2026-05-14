@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ERMETE-Lab Papers with code</title>
+    <style>
+      :root {
+        color-scheme: light dark;
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+          sans-serif;
+      }
+
+      body {
+        margin: 0;
+        padding: 2rem;
+        background: #f6f8fa;
+        color: #24292f;
+      }
+
+      main {
+        max-width: 960px;
+        margin: 0 auto;
+      }
+
+      h1 {
+        margin-top: 0;
+      }
+
+      .lead {
+        margin-bottom: 1.5rem;
+      }
+
+      .empty-state,
+      table {
+        width: 100%;
+        background: #ffffff;
+        border: 1px solid #d0d7de;
+        border-radius: 0.5rem;
+        box-shadow: 0 1px 2px rgba(31, 35, 40, 0.04);
+      }
+
+      .empty-state {
+        padding: 1.5rem;
+        box-sizing: border-box;
+      }
+
+      table {
+        border-collapse: collapse;
+        overflow: hidden;
+      }
+
+      th,
+      td {
+        padding: 0.9rem;
+        text-align: left;
+        vertical-align: top;
+        border-bottom: 1px solid #d8dee4;
+      }
+
+      tr:last-child td {
+        border-bottom: 0;
+      }
+
+      th {
+        background: #f6f8fa;
+      }
+
+      code {
+        font-size: 0.9em;
+      }
+
+      a {
+        color: #0969da;
+      }
+
+      @media (prefers-color-scheme: dark) {
+        body {
+          background: #0d1117;
+          color: #e6edf3;
+        }
+
+        .empty-state,
+        table {
+          background: #161b22;
+          border-color: #30363d;
+        }
+
+        th,
+        td {
+          border-bottom-color: #30363d;
+        }
+
+        th {
+          background: #0d1117;
+        }
+
+        a {
+          color: #58a6ff;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <h1>ERMETE-Lab papers with code</h1>
+      <p class="lead">
+        Journal papers are listed here together with the ERMETE-Lab repository
+        that contains the related implementation.
+      </p>
+      <div id="content" class="empty-state">Loading paper index…</div>
+    </main>
+    <script>
+      const content = document.getElementById("content");
+
+      function renderEmptyState(message) {
+        content.className = "empty-state";
+        content.textContent = message;
+      }
+
+      function renderTable(papers) {
+        const rows = papers
+          .map(
+            (paper) => `
+              <tr>
+                <td>
+                  <strong>${paper.title}</strong>
+                  ${paper.authors ? `<div>${paper.authors}</div>` : ""}
+                  ${paper.journal ? `<div>${paper.journal}</div>` : ""}
+                  ${paper.year ? `<div>${paper.year}</div>` : ""}
+                </td>
+                <td>
+                  ${
+                    paper.paper_url
+                      ? `<a href="${paper.paper_url}">Read paper</a>`
+                      : ""
+                  }
+                  ${paper.doi ? `<div><code>${paper.doi}</code></div>` : ""}
+                </td>
+                <td>
+                  <a href="${paper.repository_url}">${paper.repository}</a>
+                </td>
+                <td><code>${paper.submodule_path}</code></td>
+                <td>${paper.notes ?? ""}</td>
+              </tr>
+            `,
+          )
+          .join("");
+
+        content.className = "";
+        content.innerHTML = `
+          <table>
+            <thead>
+              <tr>
+                <th>Paper</th>
+                <th>Publication</th>
+                <th>Repository</th>
+                <th>Submodule path</th>
+                <th>Notes</th>
+              </tr>
+            </thead>
+            <tbody>${rows}</tbody>
+          </table>
+        `;
+      }
+
+      fetch("./papers.json")
+        .then((response) => {
+          if (!response.ok) {
+            throw new Error("Unable to load paper metadata.");
+          }
+
+          return response.json();
+        })
+        .then((data) => {
+          const papers = Array.isArray(data.papers) ? data.papers : [];
+
+          if (!papers.length) {
+            renderEmptyState(
+              "No linked journal papers have been added yet. Add a repository submodule under repositories/ and a matching entry in papers.json.",
+            );
+            return;
+          }
+
+          renderTable(papers);
+        })
+        .catch((error) => {
+          renderEmptyState(error.message);
+        });
+    </script>
+  </body>
+</html>

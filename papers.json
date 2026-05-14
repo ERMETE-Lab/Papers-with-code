@@ -1,0 +1,18 @@
+{
+  "papers": [
+    {
+      "title": "Robust state estimation from partial out-core measurements with Shallow Recurrent Decoder for nuclear reactors",
+      "authors": "Stefano Riva; Carolina Introini; Antonio Cammi; J. Nathan Kutz",
+      "journal": "Progress in Nuclear Energy",
+      "year": 2025,
+      "volume": "189",
+      "pages": "105928",
+      "repository": "NuSHRED",
+      "repository_url": "https://github.com/ERMETE-Lab/NuSHRED",
+      "submodule_path": "repositories/NuSHRED",
+      "doi": "10.1016/j.pnucene.2025.105928",
+      "paper_url": "https://www.sciencedirect.com/science/article/pii/S0149197025003269",
+      "notes": "State reconstruction from three out-of-core neutron flux measurements over 20 coupled field variables."
+    }
+  ]
+}
