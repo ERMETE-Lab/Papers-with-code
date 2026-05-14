@@ -125,8 +125,17 @@
               <tr>
                 <td>
                   <strong>${paper.title}</strong>
+                  ${paper.authors ? `<div>${paper.authors}</div>` : ""}
                   ${paper.journal ? `<div>${paper.journal}</div>` : ""}
                   ${paper.year ? `<div>${paper.year}</div>` : ""}
+                </td>
+                <td>
+                  ${
+                    paper.paper_url
+                      ? `<a href="${paper.paper_url}">Read paper</a>`
+                      : ""
+                  }
+                  ${paper.doi ? `<div><code>${paper.doi}</code></div>` : ""}
                 </td>
                 <td>
                   <a href="${paper.repository_url}">${paper.repository}</a>
@@ -144,6 +153,7 @@
             <thead>
               <tr>
                 <th>Paper</th>
+                <th>Publication</th>
                 <th>Repository</th>
                 <th>Submodule path</th>
                 <th>Notes</th>

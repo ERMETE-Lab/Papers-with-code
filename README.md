@@ -19,7 +19,12 @@ hosted in other repositories in the `ERMETE-Lab` organization.
    - `repository`
    - `repository_url`
    - `submodule_path`
-   - optional `journal`, `year`, and `notes`
+   - optional `authors`, `journal`, `year`, `doi`, `paper_url`, and `notes`
 
 Until entries are added, the wrapper renders an empty-state message instead of
 an empty table.
+
+## GitHub Pages
+
+The repository includes a workflow that publishes the static site (`index.html`
+and `papers.json`) to GitHub Pages on pushes to `main`.
