@@ -26,6 +26,47 @@
       "submodule_path": "repositories/ROSE-pDMD",
       "doi": "10.1080/00295450.2025.2575701",
       "paper_url": "https://doi.org/10.1080/00295450.2025.2575701"
+    },
+    {
+      "title": "pyforce: Python Framework for data-driven model Order Reduction of multi-physiCs problems",
+      "authors": "Stefano Riva; Carolina Introini; Antonio Cammi",
+      "journal": "Journal of Open Source Software",
+      "year": 2026,
+      "volume": "11",
+      "pages": "6950",
+      "repository": "ROSE-pyforce",
+      "repository_url": "https://github.com/ERMETE-Lab/ROSE-pyforce",
+      "submodule_path": "repositories/ROSE-pyforce",
+      "doi": "10.21105/joss.06950",
+      "paper_url": "https://doi.org/10.21105/joss.06950"
+    },
+    {
+      "title": "OFELIA: An OpenMC-FEniCSx coupling for neutronic calculation with temperature feedback",
+      "authors": "Lorenzo Loi; Stefano Riva; Carolina Introini; Francesca Giacobbo; Xiang Wang; Antonio Cammi",
+      "journal": "Nuclear Engineering and Design",
+      "year": 2024,
+      "volume": "428",
+      "pages": "113480",
+      "repository": "MP-OFELIA",
+      "repository_url": "https://github.com/ERMETE-Lab/MP-OFELIA",
+      "submodule_path": "repositories/MP-OFELIA",
+      "doi": "10.1016/j.nucengdes.2024.113480",
+      "paper_url": "https://www.sciencedirect.com/science/article/pii/S0029549324005806",
+      "notes": "Fully open-source multi-physics coupling of OpenMC (neutronics) and FEniCSx (thermal-hydraulics) for PWR fuel pin analysis."
+    },
+    {
+      "title": "A finite element implementation of the incompressible Schrödinger flow method",
+      "authors": "Stefano Riva; Carolina Introini; Antonio Cammi",
+      "journal": "Physics of Fluids",
+      "year": 2024,
+      "volume": "36",
+      "pages": "017138",
+      "repository": "MP-pyISFenix",
+      "repository_url": "https://github.com/ERMETE-Lab/MP-pyISFenix",
+      "submodule_path": "repositories/MP-pyISFenix",
+      "doi": "10.1063/5.0180356",
+      "paper_url": "https://doi.org/10.1063/5.0180356",
+      "notes": "Finite element formulation of the Incompressible Schrödinger Flow method for inviscid fluid simulation via the Madelung analogy."
     }
   ]
 }
