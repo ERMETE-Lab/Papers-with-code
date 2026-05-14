@@ -4,3 +4,12 @@
 [submodule "repositories/ROSE-pDMD"]
 	path = repositories/ROSE-pDMD
 	url = https://github.com/ERMETE-Lab/ROSE-pDMD
+[submodule "repositories/ROSE-pyforce"]
+	path = repositories/ROSE-pyforce
+	url = https://github.com/ERMETE-Lab/ROSE-pyforce
+[submodule "repositories/MP-OFELIA"]
+	path = repositories/MP-OFELIA
+	url = https://github.com/ERMETE-Lab/MP-OFELIA
+[submodule "repositories/MP-pyISFenix"]
+	path = repositories/MP-pyISFenix
+	url = https://github.com/ERMETE-Lab/MP-pyISFenix
